@@ -1,19 +1,23 @@
-import { Route, BrowserRouter as Router,Switch  } from 'react-router-dom';
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import Home from './Pages/Home/Home'
 import NotFound from './Components/NotFound/NotFound'
 import './App.scss';
+// CONTEXT
+import MoviesState from './Context/Movies/MoviesState'
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-          <Switch>
-              <Route path="/" exact component={Home} />   
-              <Route path="*" component={NotFound} />  
-          </Switch>
-        </Router>    
-    </div>
-  );
+    return <MoviesState>
+        <div className="App"> {/* Aqui todos los componentes podran acceder al estado de context */}
+            <Router>
+                <Switch>
+                    <Route path="/" exact
+                        component={Home}/>
+                    <Route path="*"
+                        component={NotFound}/>
+                </Switch>
+            </Router>
+        </div>
+    </MoviesState>;
 }
 
 export default App;
