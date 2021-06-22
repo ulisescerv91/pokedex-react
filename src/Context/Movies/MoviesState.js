@@ -3,9 +3,10 @@
  * Se escribe el estado que podremos consumir  asi como las funciones que alteraran el estado
  * 
  */
- import react, {useReducer} from 'react';
+ import  {useReducer} from 'react';
 import MoviesReducer from './MoviesReducer'; //Parametro de useReducer
 import MoviesContext from './MovieContext'
+import {fetchTrendingMovies} from '../../utils/request'
 import axios from 'axios';
 const MoviesState = (props) => { 
     /**
@@ -27,10 +28,12 @@ const MoviesState = (props) => {
  * Obtener Peliculas
  */
     const getMovies = async () => {
-        const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
+        //const res = await axios.get('https://api.themoviedb.org/3/trending/movie/week?api_key=14d344666a5abe82c56c471106d9ecde&language=en-US')
+        const res = await fetchTrendingMovies()
+        console.log(res)
         dispatch({
             type:'GET_MOVIES',
-            payload:res.data
+            payload:res
         })
     }
 

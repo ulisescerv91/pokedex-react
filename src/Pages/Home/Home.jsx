@@ -1,4 +1,4 @@
-import react,{useEffect, useContext} from 'react'
+import {useEffect, useContext} from 'react'
 import MoviesContext from '../../Context/Movies/MovieContext'
 import './Home.scss'
 
@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <div className='Home'>
             {
-                movies.map( item => <h1>{item.title}</h1> )
+                <h1>HOLlZGA</h1>
             }
         </div>
     )
