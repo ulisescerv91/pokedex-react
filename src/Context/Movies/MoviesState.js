@@ -6,14 +6,15 @@
  import  {useReducer} from 'react';
 import MoviesReducer from './MoviesReducer'; //Parametro de useReducer
 import MoviesContext from './MovieContext'
-import {fetchTrendingMovies} from '../../utils/request'
-import axios from 'axios';
+import {fetchTrendingMovie, fetchTrendingWeekMovies} from '../../utils/request'
+
 const MoviesState = (props) => { 
     /**
- * Definir el estado inicial de la aplicacion
- */
+     * Definir el estado inicial de la aplicacion
+     */
     const initialState = {
-        movies: []
+        trendingMovie: [],
+        trendingWeekMovies:[]
     }
 
     /**
@@ -25,17 +26,30 @@ const MoviesState = (props) => {
 
 
     /**
- * Obtener Peliculas
- */
-    const getMovies = async () => {
-        //const res = await axios.get('https://api.themoviedb.org/3/trending/movie/week?api_key=14d344666a5abe82c56c471106d9ecde&language=en-US')
-        const res = await fetchTrendingMovies()
+     * Obtener Una Pelicula Random
+     */
+    const getTrendingMovie = async () => {        
+        const res = await fetchTrendingMovie()
         console.log(res)
         dispatch({
-            type:'GET_MOVIES',
+            type:'GET_TRENDING_MOVIE',
             payload:res
         })
     }
+
+    /**
+     * Obtener lista  peliculas tranding of the week 
+     */
+     const getTrendingWeekMovies = async () => {        
+        const res = await fetchTrendingWeekMovies()
+        console.log(res)
+
+        dispatch({
+            type:'GET_TRENDING_WEEK_MOVIES',
+            payload:res
+        })
+    }
+
 
 
     //Todo lo que este dentro de MoviesContext podras acceder al estado que se definio arriba
@@ -43,8 +57,10 @@ const MoviesState = (props) => {
     return (
         
         <MoviesContext.Provider value={{
-            movies:state.movies,
-            getMovies
+            trendingMovie:state.trendingMovie,
+            trendingWeekMovies:state.trendingWeekMovies,
+            getTrendingMovie,
+            getTrendingWeekMovies
         }}>
             {
                 props.children
