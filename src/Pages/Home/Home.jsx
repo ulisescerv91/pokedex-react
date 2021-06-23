@@ -6,17 +6,20 @@ import './Home.scss'
 
 export default function Home() {
 
-    const {trendingMovie, getTrendingMovie, trendingWeekMovies,getTrendingWeekMovies} = useContext(MoviesContext)
+    const {trendingMovie, getTrendingMovie, trendingWeekMovies,getTrendingWeekMovies, trendingWeekShows, getTrendingTvShows} = useContext(MoviesContext)
 
     useEffect( () =>{
         getTrendingMovie()
         getTrendingWeekMovies()
+        getTrendingTvShows()
     }, [])
 
     return (
         <div className='Home'>
             <HeaderMovie movie={trendingMovie}/>
             <CarouselCards movieList={trendingWeekMovies} title={'Trending Movies'}/>
+            <CarouselCards movieList={trendingWeekShows} title={'Trending TV Shows'}/>
+
         </div>
     )
 }

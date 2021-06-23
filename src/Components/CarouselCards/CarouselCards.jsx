@@ -4,6 +4,7 @@ import 'swiper/swiper.scss';
 import "swiper/components/navigation/navigation.scss"
 import './CarouselCards.scss'
 import SwiperCore, {Navigation} from 'swiper/core';
+import Card from '../Card/Card'
 // install Swiper modules
 SwiperCore.use([Navigation]);
 
@@ -22,18 +23,11 @@ export default function CarouselCards(props) {
                 className="mySwiper">
 
                 {
-
-                movieList.map(movie => <SwiperSlide>
-                    <img src={
-                            `https://image.tmdb.org/t/p/original${
-                                movie.poster_path
-                            }`
-                        }
-                        alt={
-                            movie.title || movie.original_name
-                        }/>
-                </SwiperSlide>)
-            } </Swiper>
+                    movieList.map(movie => <SwiperSlide>
+                        <Card movie={movie}/>
+                    </SwiperSlide>)
+                } 
+            </Swiper>
 
 
         </div>

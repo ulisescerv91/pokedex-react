@@ -31,7 +31,7 @@ export const fetchTrendingMovie = async () =>{
 
 /**
  * 
- * @returns Random Trending Movie
+ * @returns List Trending Movie
  */
  export const fetchTrendingWeekMovies = async () =>{
     try {
@@ -45,7 +45,28 @@ export const fetchTrendingMovie = async () =>{
         return res.data.results;
 
     } catch (error) {
-        console.log(fetchTrendingMovie,error)
+        console.log(fetchTrendingWeekMovies,error)
+    }
+}
+
+
+/**
+ * 
+ * @returns List Trending TV Shows
+ */
+ export const fetchTrendingTvShows = async () =>{
+    try {
+        const res = await axios.get( `${baseURL}/trending/tv/week`,{
+            params: {
+                api_key: API_KEY,
+                language: 'en_US'
+            }
+        })
+                
+        return res.data.results;
+
+    } catch (error) {
+        console.log(fetchTrendingTvShows,error)
     }
 }
 

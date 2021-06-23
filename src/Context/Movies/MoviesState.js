@@ -6,7 +6,7 @@
  import  {useReducer} from 'react';
 import MoviesReducer from './MoviesReducer'; //Parametro de useReducer
 import MoviesContext from './MovieContext'
-import {fetchTrendingMovie, fetchTrendingWeekMovies} from '../../utils/request'
+import {fetchTrendingMovie, fetchTrendingWeekMovies, fetchTrendingTvShows} from '../../utils/request'
 
 const MoviesState = (props) => { 
     /**
@@ -14,7 +14,8 @@ const MoviesState = (props) => {
      */
     const initialState = {
         trendingMovie: [],
-        trendingWeekMovies:[]
+        trendingWeekMovies:[],
+        trendingWeekShows:[]
     }
 
     /**
@@ -50,6 +51,19 @@ const MoviesState = (props) => {
         })
     }
 
+    /**
+     * Obtener lista  TV SHOWS of the week 
+     */
+         const getTrendingTvShows = async () => {        
+            const res = await fetchTrendingTvShows()
+            console.log(res)
+    
+            dispatch({
+                type:'GET_TRENDING_TV_SHOWS',
+                payload:res
+            })
+        }
+
 
 
     //Todo lo que este dentro de MoviesContext podras acceder al estado que se definio arriba
@@ -59,8 +73,10 @@ const MoviesState = (props) => {
         <MoviesContext.Provider value={{
             trendingMovie:state.trendingMovie,
             trendingWeekMovies:state.trendingWeekMovies,
+            trendingWeekShows:state.trendingWeekShows,
             getTrendingMovie,
-            getTrendingWeekMovies
+            getTrendingWeekMovies,
+            getTrendingTvShows
         }}>
             {
                 props.children
