@@ -23,7 +23,7 @@ export default function CarouselCards(props) {
                 className="mySwiper">
 
                 {
-                    movieList.map(movie => <SwiperSlide>
+                    movieList.map((movie, index) => <SwiperSlide key={index}>
                         <Card movie={movie}/>
                     </SwiperSlide>)
                 } 

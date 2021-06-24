@@ -4,6 +4,7 @@ import NotFound from './Components/NotFound/NotFound'
 import './App.scss';
 // CONTEXT
 import MoviesState from './Context/Movies/MoviesState'
+import Movie from './Pages/Movies/Movie';
 
 function App() {
     return <MoviesState>
@@ -12,6 +13,8 @@ function App() {
                 <Switch>
                     <Route path="/" exact
                         component={Home}/>
+                    <Route path="/movie/:idMovie" 
+                        component={Movie}/>
                     <Route path="*"
                         component={NotFound}/>
                 </Switch>

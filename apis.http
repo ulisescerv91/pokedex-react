@@ -1,0 +1,14 @@
+###Get MOvie Details WORKS
+https://api.themoviedb.org/3/movie/508943?api_key=14d344666a5abe82c56c471106d9ecde&language=en_US
+
+###Get MOvie Details NOT WORKS
+https://api.themoviedb.org/3/tv/96677?api_key=14d344666a5abe82c56c471106d9ecde&language=en_US
+
+
+### Buscar afuera
+
+
+https://api.themoviedb.org/3/movie/508943/external_ids?api_key=14d344666a5abe82c56c471106d9ecde
+
+### GEt videos
+https://api.themoviedb.org/3/movie/508943/videos?api_key=14d344666a5abe82c56c471106d9ecde&language=en-US

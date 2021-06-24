@@ -20,8 +20,9 @@ export const fetchTrendingMovie = async () =>{
                 language: 'en_US'
             }
         })
-                
-        return random_item(res.data.results);
+        const movie =  random_item(res.data.results);
+        const resMovie = await fetchMovieSelected(movie.id)
+        return resMovie
 
     } catch (error) {
         console.log(fetchTrendingMovie,error)
@@ -70,6 +71,26 @@ export const fetchTrendingMovie = async () =>{
     }
 }
 
+
+/**
+ * 
+ * @returns Movie details
+ */
+ export const fetchMovieSelected = async (movie_id) =>{
+    try {
+        const res = await axios.get( `${baseURL}/movie/${movie_id}`,{
+            params: {
+                api_key: API_KEY,
+                language: 'en_US'
+            }
+        })
+        console.log(res)
+        return res.data;
+
+    } catch (error) {
+        console.log(fetchTrendingTvShows,error)
+    }
+}
 
 
 

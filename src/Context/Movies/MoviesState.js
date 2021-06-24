@@ -6,7 +6,7 @@
  import  {useReducer} from 'react';
 import MoviesReducer from './MoviesReducer'; //Parametro de useReducer
 import MoviesContext from './MovieContext'
-import {fetchTrendingMovie, fetchTrendingWeekMovies, fetchTrendingTvShows} from '../../utils/request'
+import {fetchTrendingMovie, fetchTrendingWeekMovies, fetchTrendingTvShows, fetchMovieSelected} from '../../utils/request'
 
 const MoviesState = (props) => { 
     /**
@@ -15,7 +15,8 @@ const MoviesState = (props) => {
     const initialState = {
         trendingMovie: [],
         trendingWeekMovies:[],
-        trendingWeekShows:[]
+        trendingWeekShows:[],
+        movieSelected:[]
     }
 
     /**
@@ -31,7 +32,6 @@ const MoviesState = (props) => {
      */
     const getTrendingMovie = async () => {        
         const res = await fetchTrendingMovie()
-        console.log(res)
         dispatch({
             type:'GET_TRENDING_MOVIE',
             payload:res
@@ -64,6 +64,16 @@ const MoviesState = (props) => {
             })
         }
 
+    /**
+     * Obtener lista  TV SHOWS of the week 
+     */
+     const getMovieSelected = async (movie_id) => {                 
+        const res = await fetchMovieSelected(movie_id)
+        dispatch({
+            type:'GET_MOVIE_SELECTED',
+            payload:res
+        })
+    }
 
 
     //Todo lo que este dentro de MoviesContext podras acceder al estado que se definio arriba
@@ -74,9 +84,11 @@ const MoviesState = (props) => {
             trendingMovie:state.trendingMovie,
             trendingWeekMovies:state.trendingWeekMovies,
             trendingWeekShows:state.trendingWeekShows,
+            movieSelected:state.movieSelected,
             getTrendingMovie,
             getTrendingWeekMovies,
-            getTrendingTvShows
+            getTrendingTvShows,
+            getMovieSelected
         }}>
             {
                 props.children
