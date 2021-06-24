@@ -32,9 +32,9 @@ export const requestImg = {
  * 
  * @returns Movie details
  */
- export const fetchMovieSelected = async (movie_id) =>{
+ export const fetchItemSelected = async (movie_id,media_type) =>{
     try {
-        const res = await axios.get( `${baseURL}/movie/${movie_id}`,{
+        const res = await axios.get( `${baseURL}/${media_type}/${movie_id}`,{
             params: {
                 api_key: API_KEY,
                 language: 'en_US'
@@ -44,7 +44,7 @@ export const requestImg = {
         return res.data;
 
     } catch (error) {
-        console.log(fetchMovieSelected,error)
+        console.log(fetchItemSelected,error)
     }
 }
 

@@ -9,7 +9,7 @@ import Card from '../Card/Card'
 SwiperCore.use([Navigation]);
 
 export default function CarouselCards(props) {
-    const {movieList, title} = props;
+    const {mediaList, title} = props;
 
     return (
         <div className='CarouselCards'>
@@ -23,8 +23,8 @@ export default function CarouselCards(props) {
                 className="mySwiper">
 
                 {
-                    movieList.map((movie, index) => <SwiperSlide key={index}>
-                        <Card movie={movie}/>
+                    mediaList.map((item, index) => <SwiperSlide key={index}>
+                        <Card item={item} />
                     </SwiperSlide>)
                 } 
             </Swiper>

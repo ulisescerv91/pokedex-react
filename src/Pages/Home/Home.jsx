@@ -22,11 +22,10 @@ export default function Home() {
     if( trendingMovieList.length>0 && trendingAllList.length>0 && trendingTVList.length>0){
 
         return (
-            <div className='Home'>
-                
+            <div className='Home'>                
                 <HeaderMovie movie={random_item_list(trendingAllList)}/>
-                <CarouselCards movieList={trendingMovieList} title={'Trending Movies'}/>
-                <CarouselCards movieList={trendingTVList} title={'Trending TV Shows'}/>
+                <CarouselCards mediaList={trendingMovieList} title={'Trending Movies'}/>
+                <CarouselCards mediaList={trendingTVList} title={'Trending TV Shows'} />
             </div>
         )
     }else{

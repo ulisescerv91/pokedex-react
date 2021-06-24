@@ -7,16 +7,16 @@ import './Movie.scss'
 export default function Movie() {
 
     let { idMovie } = useParams();
-    const {getMovieSelected , movieSelected} = useContext(MoviesContext)
+    const {itemSelected} = useContext(MoviesContext)
 
     useEffect( () =>{
-        getMovieSelected(idMovie)
+        //getMovieSelected(idMovie)
     }, [])
 
     return (
         <div>
             {
-                movieSelected && <HeaderMovie movie={movieSelected}/>
+                itemSelected && <HeaderMovie movie={itemSelected}/>
             }
         </div>
     )

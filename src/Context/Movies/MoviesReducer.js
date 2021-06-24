@@ -2,7 +2,11 @@
 /**
  * Aqui se define que es lo que se hara cuando se mandan llamar  lo que fue declarado en el types.js
  */
-import { GET_TRENDING_ALL_LIST, GET_TRENDING_MOVIES_LIST, GET_TRENDING_TV_LIST} from '../types.js';
+import { 
+    GET_TRENDING_ALL_LIST,
+    GET_TRENDING_MOVIES_LIST,
+    GET_TRENDING_TV_LIST,
+    SET_MEDIA_SELECTED} from '../types.js';
 
 export default ( state, action ) =>{
     const {payload, type} = action; //Payload los datos que me pasan en la funciones
@@ -24,7 +28,12 @@ export default ( state, action ) =>{
                  ...state,                 
                  trendingTVList: payload
             }
-        
+        case SET_MEDIA_SELECTED: 
+            return{
+                 ...state,                 
+                 itemSelected: payload
+            }
+            
         default:{
             return state
         }
