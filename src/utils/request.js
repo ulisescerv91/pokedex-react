@@ -8,9 +8,6 @@ export const requestImg = {
     fetchMovieImg : (img) => `https://image.tmdb.org/t/p/original${img}`
 }
 
-
-
-
 /**
  * @param {string} media_type
  * 
