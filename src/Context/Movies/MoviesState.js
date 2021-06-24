@@ -6,17 +6,16 @@
  import  {useReducer} from 'react';
 import MoviesReducer from './MoviesReducer'; //Parametro de useReducer
 import MoviesContext from './MovieContext'
-import {fetchTrendingMovie, fetchTrendingWeekMovies, fetchTrendingTvShows, fetchMovieSelected} from '../../utils/request'
+import {fetchTrendingMovie, fetchTrendingWeekMovies, fetchTrendingTvShows, fetchMovieSelected, fetchTrendingList} from '../../utils/request'
 
 const MoviesState = (props) => { 
     /**
      * Definir el estado inicial de la aplicacion
      */
     const initialState = {
-        trendingMovie: [],
-        trendingWeekMovies:[],
-        trendingWeekShows:[],
-        movieSelected:[]
+        trendingAllList: [],
+        trendingMovieList: [],
+        trendingTVList: []
     }
 
     /**
@@ -30,47 +29,12 @@ const MoviesState = (props) => {
     /**
      * Obtener Una Pelicula Random
      */
-    const getTrendingMovie = async () => {        
-        const res = await fetchTrendingMovie()
+    const getTrendingList = async (media_type) => {  
+        let media_type_list = (media_type  === 'all') ? 'GET_TRENDING_ALL_LIST' :  (media_type  === 'movie')? 'GET_TRENDING_MOVIES_LIST' : 'GET_TRENDING_TV_LIST'
+
+        const res = await fetchTrendingList(media_type)
         dispatch({
-            type:'GET_TRENDING_MOVIE',
-            payload:res
-        })
-    }
-
-    /**
-     * Obtener lista  peliculas tranding of the week 
-     */
-     const getTrendingWeekMovies = async () => {        
-        const res = await fetchTrendingWeekMovies()
-        console.log(res)
-
-        dispatch({
-            type:'GET_TRENDING_WEEK_MOVIES',
-            payload:res
-        })
-    }
-
-    /**
-     * Obtener lista  TV SHOWS of the week 
-     */
-         const getTrendingTvShows = async () => {        
-            const res = await fetchTrendingTvShows()
-            console.log(res)
-    
-            dispatch({
-                type:'GET_TRENDING_TV_SHOWS',
-                payload:res
-            })
-        }
-
-    /**
-     * Obtener lista  TV SHOWS of the week 
-     */
-     const getMovieSelected = async (movie_id) => {                 
-        const res = await fetchMovieSelected(movie_id)
-        dispatch({
-            type:'GET_MOVIE_SELECTED',
+            type:media_type_list,
             payload:res
         })
     }
@@ -81,14 +45,10 @@ const MoviesState = (props) => {
     return (
         
         <MoviesContext.Provider value={{
-            trendingMovie:state.trendingMovie,
-            trendingWeekMovies:state.trendingWeekMovies,
-            trendingWeekShows:state.trendingWeekShows,
-            movieSelected:state.movieSelected,
-            getTrendingMovie,
-            getTrendingWeekMovies,
-            getTrendingTvShows,
-            getMovieSelected
+            trendingAllList:state.trendingAllList,
+            trendingMovieList:state.trendingMovieList,
+            trendingTVList:state.trendingTVList,
+            getTrendingList
         }}>
             {
                 props.children

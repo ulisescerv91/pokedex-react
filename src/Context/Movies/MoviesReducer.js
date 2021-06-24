@@ -2,33 +2,29 @@
 /**
  * Aqui se define que es lo que se hara cuando se mandan llamar  lo que fue declarado en el types.js
  */
-import { GET_TRENDING_MOVIE, GET_TRENDING_WEEK_MOVIES , GET_TRENDING_TV_SHOWS, GET_MOVIE_SELECTED} from '../types.js';
+import { GET_TRENDING_ALL_LIST, GET_TRENDING_MOVIES_LIST, GET_TRENDING_TV_LIST} from '../types.js';
 
 export default ( state, action ) =>{
     const {payload, type} = action; //Payload los datos que me pasan en la funciones
 
     switch( type ){
-        case GET_TRENDING_MOVIE: 
+        case GET_TRENDING_ALL_LIST: 
             return{
                  ...state,                 
-                 trendingMovie: payload
+                 trendingAllList: payload
             }
-            //trendingMovie: payload -> Esto actualizara la propiedad movies que esta en el MoviesState
-        case GET_TRENDING_WEEK_MOVIES: 
+            //trendingAllList: payload -> Esto actualizara la propiedad movies que esta en el MoviesState
+        case GET_TRENDING_MOVIES_LIST: 
             return{
                  ...state,                 
-                 trendingWeekMovies: payload
+                 trendingMovieList: payload
             }
-        case GET_TRENDING_TV_SHOWS: 
+        case GET_TRENDING_TV_LIST: 
             return{
                  ...state,                 
-                 trendingWeekShows: payload
-            }            
-        case GET_MOVIE_SELECTED: 
-            return{
-                 ...state,                 
-                 movieSelected: payload
+                 trendingTVList: payload
             }
+        
         default:{
             return state
         }

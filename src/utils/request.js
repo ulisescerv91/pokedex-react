@@ -8,69 +8,28 @@ export const requestImg = {
     fetchMovieImg : (img) => `https://image.tmdb.org/t/p/original${img}`
 }
 
+
+
+
 /**
+ * @param {string} media_type
  * 
- * @returns Random Trending Movie
+ * @returns Trending List
  */
-export const fetchTrendingMovie = async () =>{
+ export const fetchTrendingList= async (media_type) =>{
     try {
-        const res = await axios.get( `${baseURL}/trending/all/week`,{
+        const res = await axios.get( `${baseURL}/trending/${media_type}/week`,{
             params: {
                 api_key: API_KEY,
                 language: 'en_US'
             }
         })
-        const movie =  random_item(res.data.results);
-        const resMovie = await fetchMovieSelected(movie.id)
-        return resMovie
-
-    } catch (error) {
-        console.log(fetchTrendingMovie,error)
-    }
-}
-
-
-/**
- * 
- * @returns List Trending Movie
- */
- export const fetchTrendingWeekMovies = async () =>{
-    try {
-        const res = await axios.get( `${baseURL}/trending/movie/week`,{
-            params: {
-                api_key: API_KEY,
-                language: 'en_US'
-            }
-        })
-                
         return res.data.results;
 
     } catch (error) {
-        console.log(fetchTrendingWeekMovies,error)
+        console.log(fetchTrendingList,error)
     }
 }
-
-
-/**
- * 
- * @returns List Trending TV Shows
- */
- export const fetchTrendingTvShows = async () =>{
-    try {
-        const res = await axios.get( `${baseURL}/trending/tv/week`,{
-            params: {
-                api_key: API_KEY,
-                language: 'en_US'
-            }
-        })
-                
-        return res.data.results;
-
-    } catch (error) {
-        console.log(fetchTrendingTvShows,error)
-    }
-}
-
 
 /**
  * 
@@ -88,23 +47,8 @@ export const fetchTrendingMovie = async () =>{
         return res.data;
 
     } catch (error) {
-        console.log(fetchTrendingTvShows,error)
+        console.log(fetchMovieSelected,error)
     }
 }
 
 
-
-
-
-
-/**
- * UTILS FUNCTIONS
- */
-
-
-/**
- * 
- * @param items ARRAY
- * @returns One random element from array
- */
- const random_item = items => items[Math.floor(Math.random()*items.length)]

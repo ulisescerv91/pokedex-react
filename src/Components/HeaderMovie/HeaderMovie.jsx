@@ -7,7 +7,7 @@ import StarHalfIcon from '@material-ui/icons/StarHalf';
 
 
 export default function HeaderMovie(props) {
-    const {title, original_name, poster_path, backdrop_path, vote_count, release_date} = props.movie
+    const {title, original_name, poster_path, backdrop_path, vote_count, release_date, first_air_date} = props.movie
     return (
         
         <div className='HeaderMovie'>
@@ -28,7 +28,7 @@ export default function HeaderMovie(props) {
                     <span className="HeaderMovie__info__rate__reviewsAmount">{vote_count} Reviews</span>
                 </div>
                 <div className="HeaderMovie__info__stats">
-                    <span className="year">{release_date.substring(0,4)}</span> - 
+                    <span className="year">{ release_date || first_air_date}</span> - 
                     <span className="time">1h 59min</span>
                     <span className="certification"> Cert. 15</span>
                 </div>

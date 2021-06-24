@@ -6,20 +6,30 @@ import './Home.scss'
 
 export default function Home() {
 
-    const {trendingMovie, getTrendingMovie, trendingWeekMovies,getTrendingWeekMovies, trendingWeekShows, getTrendingTvShows} = useContext(MoviesContext)
-
+    const {trendingMovieList, getTrendingList,trendingAllList,trendingTVList} = useContext(MoviesContext)
+    
+    
     useEffect( () =>{
-        getTrendingMovie()
-        getTrendingWeekMovies()
-        getTrendingTvShows()
+        getTrendingList('all')
+        getTrendingList('movie')
+        getTrendingList('tv')
+        
+        // console.log()
     }, [])
+    
+    const random_item_list = items => items[Math.floor(Math.random()*items.length)]
 
-    return (
-        <div className='Home'>
-            <HeaderMovie movie={trendingMovie}/>
-            <CarouselCards movieList={trendingWeekMovies} title={'Trending Movies'}/>
-            <CarouselCards movieList={trendingWeekShows} title={'Trending TV Shows'}/>
+    if( trendingMovieList.length>0 && trendingAllList.length>0 && trendingTVList.length>0){
 
-        </div>
-    )
+        return (
+            <div className='Home'>
+                
+                <HeaderMovie movie={random_item_list(trendingAllList)}/>
+                <CarouselCards movieList={trendingMovieList} title={'Trending Movies'}/>
+                <CarouselCards movieList={trendingTVList} title={'Trending TV Shows'}/>
+            </div>
+        )
+    }else{
+        return <h1>Loading...</h1>
+    }
 }

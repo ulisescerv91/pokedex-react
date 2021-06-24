@@ -5,10 +5,9 @@ https://api.themoviedb.org/3/movie/508943?api_key=14d344666a5abe82c56c471106d9ec
 https://api.themoviedb.org/3/tv/96677?api_key=14d344666a5abe82c56c471106d9ecde&language=en_US
 
 
-### Buscar afuera
+### GEt list all 
 
-
-https://api.themoviedb.org/3/movie/508943/external_ids?api_key=14d344666a5abe82c56c471106d9ecde
+https://api.themoviedb.org/3/trending/all/week?api_key=14d344666a5abe82c56c471106d9ecde&language=en_US
 
 ### GEt videos
 https://api.themoviedb.org/3/movie/508943/videos?api_key=14d344666a5abe82c56c471106d9ecde&language=en-US
