@@ -6,7 +6,7 @@ import {
     GET_TRENDING_ALL_LIST,
     GET_TRENDING_MOVIES_LIST,
     GET_TRENDING_TV_LIST,
-    SET_MEDIA_SELECTED} from '../types.js';
+    GET_MOVIE_SELECTED} from '../types.js';
 
 export default ( state, action ) =>{
     const {payload, type} = action; //Payload los datos que me pasan en la funciones
@@ -28,12 +28,12 @@ export default ( state, action ) =>{
                  ...state,                 
                  trendingTVList: payload
             }
-        case SET_MEDIA_SELECTED: 
-            return{
-                 ...state,                 
-                 itemSelected: payload
-            }
-            
+        case GET_MOVIE_SELECTED: 
+                return{
+                     ...state,                 
+                     itemSelected: payload
+                }            
+        
         default:{
             return state
         }

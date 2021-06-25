@@ -27,6 +27,11 @@ const MoviesState = (props) => {
 
 
 
+
+    // *********---FUNTIONS****************************************************************************
+
+
+
     /**
      * Obtener Una Pelicula Random
      */
@@ -42,32 +47,16 @@ const MoviesState = (props) => {
 
 
     /**
-     * Obtener Una Pelicula Random
+     * Obtener Pelicula Seleccionada
      */
-     const getItemSelected = async (movie_id,media_type) => {  
+     const getItemSelected = async (media_id) => {  
 
-        const res = await fetchItemSelected(movie_id,media_type)
+        const res = await fetchItemSelected(media_id)
         dispatch({
-            type:'GET_MEDIA_SELECTED',
+            type:'GET_MOVIE_SELECTED',
             payload:res
         })
     }
-
-
-        /**
-     * Actualizar Item selected
-     */
-         const SetItemSelected = async (item) => {  
-            console.log('SetItemSelected',item)
-            dispatch({
-                type:'SET_MEDIA_SELECTED',
-                payload:item
-            })
-        }
-    
-
-
-
 
 
 
@@ -81,8 +70,7 @@ const MoviesState = (props) => {
             trendingTVList:state.trendingTVList,
             itemSelected:state.itemSelected,
             getTrendingList,
-            getItemSelected,
-            SetItemSelected
+            getItemSelected
         }}>
             {
                 props.children

@@ -11,3 +11,10 @@ https://api.themoviedb.org/3/trending/all/week?api_key=14d344666a5abe82c56c47110
 
 ### GEt videos
 https://api.themoviedb.org/3/movie/508943/videos?api_key=14d344666a5abe82c56c471106d9ecde&language=en-US
+
+
+
+
+
+### more Details
+https://api.themoviedb.org/3/movie/508943?api_key=8235fd73c07d8e61320d0df784562bb2&language=en-US&append_to_response=videos,credits,images,external_ids,release_dates&include_image_language=en

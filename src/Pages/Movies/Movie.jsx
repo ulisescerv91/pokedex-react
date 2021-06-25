@@ -2,15 +2,19 @@ import React,{useContext,useEffect} from 'react'
 import {useParams} from 'react-router-dom';
 import MoviesContext from '../../Context/Movies/MovieContext'
 import HeaderMovie from '../../Components/HeaderMovie/HeaderMovie'
+import Tabs from '../../Components/Tabs/Tabs'
+
 import './Movie.scss'
 
 export default function Movie() {
 
     let { idMovie } = useParams();
-    const {itemSelected} = useContext(MoviesContext)
+    const {itemSelected, getItemSelected} = useContext(MoviesContext)
 
     useEffect( () =>{
-        //getMovieSelected(idMovie)
+
+        console.log(idMovie)
+        getItemSelected(idMovie)
     }, [])
 
     return (
@@ -18,6 +22,7 @@ export default function Movie() {
             {
                 itemSelected && <HeaderMovie movie={itemSelected}/>
             }
+            <Tabs/>
         </div>
     )
 }
