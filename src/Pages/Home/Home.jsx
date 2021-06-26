@@ -13,8 +13,6 @@ export default function Home() {
         getTrendingList('all')
         getTrendingList('movie')
         getTrendingList('tv')
-        
-        // console.log()
     }, [])
     
     const random_item_list = items => items[Math.floor(Math.random()*items.length)]
@@ -23,7 +21,7 @@ export default function Home() {
 
         return (
             <div className='Home'>                
-                <HeaderMovie movie={random_item_list(trendingAllList)}/>
+                <HeaderMovie media={random_item_list(trendingAllList)}/>
                 <CarouselCards mediaList={trendingMovieList} title={'Trending Movies'}/>
                 <CarouselCards mediaList={trendingTVList} title={'Trending TV Shows'} />
             </div>

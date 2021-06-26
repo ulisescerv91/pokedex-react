@@ -7,7 +7,7 @@ import StarHalfIcon from '@material-ui/icons/StarHalf';
 
 
 export default function HeaderMovie(props) {
-    const {title, original_name, poster_path, backdrop_path, vote_count, release_date, first_air_date} = props.movie
+    const {title, original_name, poster_path, backdrop_path, vote_count, release_date, first_air_date} = props.media
     return (
         
         <div className='HeaderMovie'>

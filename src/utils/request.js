@@ -9,13 +9,13 @@ export const requestImg = {
 }
 
 /**
- * @param {string} media_type
+ * @param {string} type_media
  * 
  * @returns Trending List
  */
- export const fetchTrendingList= async (media_type) =>{
+ export const fetchTrendingList= async (type_media) =>{
     try {
-        const res = await axios.get( `${baseURL}/trending/${media_type}/week`,{
+        const res = await axios.get( `${baseURL}/trending/${type_media}/week`,{
             params: {
                 api_key: API_KEY,
                 language: 'en_US'
@@ -32,9 +32,9 @@ export const requestImg = {
  * 
  * @returns Movie details
  */
- export const fetchItemSelected = async (movie_id) =>{
+ export const fetchItemSelected = async (type_media, movie_id) =>{
     try {
-        const res = await axios.get( `${baseURL}/movie/${movie_id}?append_to_response=videos,credits,images,external_ids,release_dates&include_image_language=en`,{
+        const res = await axios.get( `${baseURL}/${type_media}/${movie_id}?append_to_response=videos,credits,images,external_ids,release_dates&include_image_language=en`,{
             params: {
                 api_key: API_KEY,
                 language: 'en_US'

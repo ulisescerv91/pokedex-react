@@ -35,12 +35,12 @@ const MoviesState = (props) => {
     /**
      * Obtener Una Pelicula Random
      */
-    const getTrendingList = async (media_type) => {  
-        let media_type_list = (media_type  === 'all') ? 'GET_TRENDING_ALL_LIST' :  (media_type  === 'movie')? 'GET_TRENDING_MOVIES_LIST' : 'GET_TRENDING_TV_LIST'
+    const getTrendingList = async (type_media) => {  
+        let type_media_list = (type_media  === 'all') ? 'GET_TRENDING_ALL_LIST' :  (type_media  === 'movie')? 'GET_TRENDING_MOVIES_LIST' : 'GET_TRENDING_TV_LIST'
 
-        const res = await fetchTrendingList(media_type)
+        const res = await fetchTrendingList(type_media)
         dispatch({
-            type:media_type_list,
+            type:type_media_list,
             payload:res
         })
     }
@@ -49,9 +49,9 @@ const MoviesState = (props) => {
     /**
      * Obtener Pelicula Seleccionada
      */
-     const getItemSelected = async (media_id) => {  
+     const getItemSelected = async (type_media,id_media) => {  
 
-        const res = await fetchItemSelected(media_id)
+        const res = await fetchItemSelected(type_media,id_media)
         dispatch({
             type:'GET_MOVIE_SELECTED',
             payload:res

@@ -4,23 +4,21 @@ import MoviesContext from '../../Context/Movies/MovieContext'
 import HeaderMovie from '../../Components/HeaderMovie/HeaderMovie'
 import Tabs from '../../Components/Tabs/Tabs'
 
-import './Movie.scss'
+import './MediaDetails.scss'
 
-export default function Movie() {
+export default function MediaDetails() {
 
-    let { idMovie } = useParams();
+    let { type_media, id_media } = useParams();
     const {itemSelected, getItemSelected} = useContext(MoviesContext)
 
     useEffect( () =>{
-
-        console.log(idMovie)
-        getItemSelected(idMovie)
+        getItemSelected(type_media,id_media)
     }, [])
 
     return (
         <div>
             {
-                itemSelected && <HeaderMovie movie={itemSelected}/>
+                itemSelected && <HeaderMovie media={itemSelected}/>
             }
             <Tabs/>
         </div>
