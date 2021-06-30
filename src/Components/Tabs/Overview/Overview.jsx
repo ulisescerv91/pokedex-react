@@ -1,11 +1,13 @@
 import React,{useContext} from 'react'
 import MoviesContext from '../../../Context/Movies/MovieContext'
 import CarouselCards from '../../CarouselCards/CarouselCards'
+
+import SocialMedia from '../../SocialMedia/SocialMedia'
 import './Overview.scss'
 
 export default function Overview() {
     const {itemSelected} = useContext(MoviesContext)
-    const {overview, release_date, runtime, revenue, genres, production_companies, credits} = itemSelected
+    const {overview, release_date, runtime, revenue, genres, production_companies, credits, external_ids, homepage} = itemSelected
     return (
         <div className='Overview'>
             <h3>Storyline</h3>
@@ -35,9 +37,9 @@ export default function Overview() {
                 </div>
             </div>
 
-            
+            {/* ICONS */}
+            <SocialMedia external_links={external_ids} homepage={homepage}/>
 
-                  
             { credits !== undefined && <CarouselCards mediaList={credits.cast} title={'Cast'} cast={true}/>}
             
         </div>
