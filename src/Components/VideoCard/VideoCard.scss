@@ -1,0 +1,17 @@
+.VideoCard{
+    position: relative;
+    &__container{
+
+        &__img{
+            width: 100%;
+            height:auto;
+        }
+        &__playBtn{
+            // border:1px solid blue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%,)
+        }
+    }
+}

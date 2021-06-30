@@ -38,7 +38,7 @@ export default function Overview() {
             </div>
 
             {/* ICONS */}
-            <SocialMedia external_links={external_ids} homepage={homepage}/>
+            <SocialMedia external_links={external_ids? external_ids:[]} homepage={homepage}/>
 
             { credits !== undefined && <CarouselCards mediaList={credits.cast} title={'Cast'} cast={true}/>}
             
