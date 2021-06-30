@@ -16,11 +16,11 @@ export default function MediaDetails() {
     }, [])
 
     return (
-        <div>
+        <div className='MediaDetails'>
             {
                 itemSelected && <HeaderMovie media={itemSelected}/>
             }
-            <Tabs/>
+            <Tabs className='test'/>
         </div>
     )
 }

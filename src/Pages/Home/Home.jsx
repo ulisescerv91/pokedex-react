@@ -22,8 +22,8 @@ export default function Home() {
         return (
             <div className='Home'>                
                 <HeaderMovie media={random_item_list(trendingAllList)}/>
-                <CarouselCards mediaList={trendingMovieList} title={'Trending Movies'}/>
-                <CarouselCards mediaList={trendingTVList} title={'Trending TV Shows'} />
+                <CarouselCards mediaList={trendingMovieList} title={'Trending Movies'} cast={false}/>
+                <CarouselCards mediaList={trendingTVList} title={'Trending TV Shows'}  cast={false}/>
             </div>
         )
     }else{

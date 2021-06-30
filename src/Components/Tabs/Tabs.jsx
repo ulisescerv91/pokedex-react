@@ -7,10 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import './Tabs.scss'
-// COMPONENTS
 import Overview from './Overview/Overview'
-
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -25,7 +22,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography component={'div'}>{children}</Typography>
+          <Typography component={'div'} >{children}</Typography>
         </Box>
       )}
     </div>
@@ -47,8 +44,7 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
-    width: 500,
+    backgroundColor: theme.palette.background.paper
   },
 }));
 
@@ -76,9 +72,9 @@ export default function FullWidthTabs() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="OVerview" {...a11yProps(0)} />
-          <Tab label="Videos" {...a11yProps(1)} />
-          <Tab label="photos" {...a11yProps(2)} />
+          <Tab label="Overview" {...a11yProps(0)} />
+          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -86,8 +82,7 @@ export default function FullWidthTabs() {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel value={value} index={0} dir={theme.direction} >
-          {/* <span>Hola</span> */}
+        <TabPanel value={value} index={0} dir={theme.direction}>
           <Overview/>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
