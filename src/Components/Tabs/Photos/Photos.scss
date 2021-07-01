@@ -1,0 +1,23 @@
+.Photos{
+    
+    
+    &__backdrops{
+        display: flex;
+        flex-wrap: wrap;
+        &__img{
+
+            width: 50%;
+            height: auto;
+            padding: 3px;
+        }
+    }
+    
+    &__posters{
+        display: flex;
+        flex-wrap: wrap;
+        &__img{
+            width: 33%;
+            padding: 3px;
+        }
+    }
+}

@@ -1,9 +1,15 @@
 .SocialMedia{
+    margin:20px 0;
     a{
-        color:#2196F3;        
-        margin-right: 15px;
+        color:white;
+        margin-right: 30px;
+        transition: color 0.25s ease-in-out;
         .icon{
-            font-size: 30px;
+            font-size: 25px;
+        }
+        
+        &:hover{
+            color:#2196F3;        
         }
     }
 }

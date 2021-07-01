@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme,  withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -9,9 +9,16 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Overview from './Overview/Overview'
 import Videos from './Videos/Videos'
+import Photos from './Photos/Photos'
+import './Tabs.scss'
+
 
 
 function TabPanel(props) {
+  
+
+
+
   const { children, value, index, ...other } = props;
 
   return (
@@ -63,8 +70,18 @@ export default function FullWidthTabs() {
     setValue(index);
   };
 
+  const StyledTab = withStyles(theme => ({
+    root: {      
+      backgroundColor:'#1B1B1B',
+      color: "#585858",
+      fontWeight: theme.typography.fontWeightRegular,
+      fontSize: theme.typography.pxToRem(15),
+      marginRight: theme.spacing(1)
+    }
+  }))(props => <Tab disableRipple {...props} />);
+
   return (
-    <div className={classes.root}>
+    <div className={`classes.root TabsDetails`}>
       <AppBar position="static" color="default">
         <Tabs
           value={value}
@@ -74,9 +91,9 @@ export default function FullWidthTabs() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Overview" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <StyledTab label="Overview" {...a11yProps(0)} />
+          <StyledTab label="Videos" {...a11yProps(1)} />
+          <StyledTab label="Photos" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -91,7 +108,7 @@ export default function FullWidthTabs() {
           <Videos/>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
+          <Photos/>
         </TabPanel>
       </SwipeableViews>
     </div>

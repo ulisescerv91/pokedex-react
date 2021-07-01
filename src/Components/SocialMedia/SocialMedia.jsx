@@ -15,22 +15,22 @@ export default function SocialMedia(props) {
     return (
         <div className='SocialMedia'>
             {
-                facebook_id && <a href={`https://www.facebook.com/${facebook_id}`}>
-                    <FacebookIcon className='icon'/>
+                facebook_id && <a href={`https://www.facebook.com/${facebook_id}`} target="_blank" rel="noopener noreferrer">
+                    <FacebookIcon className='icon' target="_blank"/>
                 </a>
             }
             {
-                instagram_id && <a href={`https://www.instagram.com/${instagram_id}`}>
+                instagram_id && <a href={`https://www.instagram.com/${instagram_id}`} target="_blank" rel="noopener noreferrer">
                     <InstagramIcon className='icon'/>
                 </a>
             }
             {
-                twitter_id && <a href={`https://twitter.com/${twitter_id}`}>
-                    <TwitterIcon className='icon'/>
+                twitter_id && <a href={`https://twitter.com/${twitter_id}`} target="_blank" rel="noopener noreferrer">
+                    <TwitterIcon className='icon' />
                 </a>
             }
             {
-                homepage && <a href={homepage}>
+                homepage && <a   href={homepage} className='icon' target="_blank" rel="noopener noreferrer">
                     <HomeIcon/>
                 </a>
             }

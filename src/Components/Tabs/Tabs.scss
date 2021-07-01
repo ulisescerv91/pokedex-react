@@ -1,4 +1,14 @@
-.Tabs{
-    background-color:red;
-    max-width: 90%;
+.TabsDetails{
+    background-color: #141414;
+    color:white;
 }
+.MuiTabs-flexContainer{
+    background-color: #141414;
+}
+.MuiTab-textColorPrimary.Mui-selected{
+    color: white !important;
+    font-weight: bold;
+    background-color: #141414;
+
+}
+

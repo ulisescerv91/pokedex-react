@@ -10,8 +10,8 @@ export default function Overview() {
     const {overview, release_date, runtime, revenue, genres, production_companies, credits, external_ids, homepage} = itemSelected
     return (
         <div className='Overview'>
-            <h3>Storyline</h3>
-            {overview}
+            <h3 className='Overview__title'>Storyline</h3>
+            <p className='Overview__description'>{overview}</p>
             <div className="Overview__stats">
                 <div className="Overview__stats__left">Released</div>
                 <div className="Overview__stats__right">{release_date}</div>
