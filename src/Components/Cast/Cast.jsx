@@ -6,7 +6,7 @@ import './Cast.scss'
 export default function Cast(props) {
     const {id, original_name, profile_path,character} = props.item;
 
-    return <Link className='Cast' to={`/`}   >
+    return <Link className='Cast' to={`/person/${id}`}   >
     <div className="Cast__container">
 
         <img className='Cast__container__img' src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${profile_path}`} alt={original_name}/>

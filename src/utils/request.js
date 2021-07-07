@@ -49,3 +49,24 @@ export const requestImg = {
 }
 
 
+/**
+ * 
+ * @returns Person details
+ */
+ export const fetchPersonSelected = async (id_person) =>{
+    try {
+        const res = await axios.get( `${baseURL}/person/${id_person}?append_to_response=external_ids,popular,latest,movie_credits,changes,images`,{
+            params: {
+                api_key: API_KEY,
+                language: 'en_US'
+            }
+        })
+        console.log(res.data)
+        return res.data;
+
+    } catch (error) {
+        console.log(fetchItemSelected,error)
+    }
+}
+
+

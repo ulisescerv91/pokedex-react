@@ -6,7 +6,7 @@
  import  {useReducer} from 'react';
 import MoviesReducer from './MoviesReducer'; //Parametro de useReducer
 import MoviesContext from './MovieContext'
-import { fetchTrendingList, fetchItemSelected} from '../../utils/request'
+import { fetchTrendingList, fetchItemSelected, fetchPersonSelected} from '../../utils/request'
 
 const MoviesState = (props) => { 
     /**
@@ -16,7 +16,8 @@ const MoviesState = (props) => {
         trendingAllList: [],
         trendingMovieList: [],
         trendingTVList: [],
-        itemSelected:[]
+        itemSelected:[],
+        personSelected:[]
     }
 
     /**
@@ -59,6 +60,19 @@ const MoviesState = (props) => {
     }
 
 
+    /**
+     * Obtener Artista Seleccionado
+     */
+     const getPersonSelected = async (id_person) => {  
+
+        const res = await fetchPersonSelected(id_person)
+        dispatch({
+            type:'GET_PERSON',
+            payload:res
+        })
+    }
+
+
 
     //Todo lo que este dentro de MoviesContext podras acceder al estado que se definio arriba
     //value={state} pueden acceder al initialState - El state viene ded donde fue definico como useReducer
@@ -69,8 +83,10 @@ const MoviesState = (props) => {
             trendingMovieList:state.trendingMovieList,
             trendingTVList:state.trendingTVList,
             itemSelected:state.itemSelected,
+            personSelected:state.personSelected,
             getTrendingList,
-            getItemSelected
+            getItemSelected,
+            getPersonSelected
         }}>
             {
                 props.children

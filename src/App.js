@@ -5,6 +5,8 @@ import './App.scss';
 // CONTEXT
 import MoviesState from './Context/Movies/MoviesState'
 import MediaDetails from './Pages/MediaDetails/MediaDetails';
+import Person from './Pages/Person/Person';
+
 
 function App() {
     return <MoviesState>
@@ -15,6 +17,9 @@ function App() {
                         component={Home}/>
                     <Route path="/personaje/:id_movie">
                         <h1>Personaje</h1>
+                    </Route>
+                    <Route path="/person/:id_person">
+                        <Person/>
                     </Route>
                     <Route path="/:type_media/:id_media">
                         <MediaDetails/>
