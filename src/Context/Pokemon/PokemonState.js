@@ -27,10 +27,11 @@ const PokemonState = (props) => {
  * Obtener Peliculas
  */
     const getPokemones = async () => {
-        const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
+        const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=10&offset=1')
+        console.log(res.data)
         dispatch({
             type:'GET_POKEMONES',
-            payload:res.data
+            payload:res.data.results
         })
     }
 

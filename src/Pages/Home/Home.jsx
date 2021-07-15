@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <div className='Home'>
             {
-                pokemones.map( item => <h1>{item.title}</h1> )
+                pokemones.map( item => <h1>{item.name}</h1> )
             }
         </div>
     )
