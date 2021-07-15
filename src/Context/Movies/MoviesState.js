@@ -3,21 +3,16 @@
  * Se escribe el estado que podremos consumir  asi como las funciones que alteraran el estado
  * 
  */
- import  {useReducer} from 'react';
+ import react, {useReducer} from 'react';
 import MoviesReducer from './MoviesReducer'; //Parametro de useReducer
 import MoviesContext from './MovieContext'
-import { fetchTrendingList, fetchItemSelected, fetchPersonSelected} from '../../utils/request'
-
+import axios from 'axios';
 const MoviesState = (props) => { 
     /**
-     * Definir el estado inicial de la aplicacion
-     */
+ * Definir el estado inicial de la aplicacion
+ */
     const initialState = {
-        trendingAllList: [],
-        trendingMovieList: [],
-        trendingTVList: [],
-        itemSelected:[],
-        personSelected:[]
+        movies: []
     }
 
     /**
@@ -28,50 +23,16 @@ const MoviesState = (props) => {
 
 
 
-
-    // *********---FUNTIONS****************************************************************************
-
-
-
     /**
-     * Obtener Una Pelicula Random
-     */
-    const getTrendingList = async (type_media) => {  
-        let type_media_list = (type_media  === 'all') ? 'GET_TRENDING_ALL_LIST' :  (type_media  === 'movie')? 'GET_TRENDING_MOVIES_LIST' : 'GET_TRENDING_TV_LIST'
-
-        const res = await fetchTrendingList(type_media)
+ * Obtener Peliculas
+ */
+    const getMovies = async () => {
+        const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
         dispatch({
-            type:type_media_list,
-            payload:res
+            type:'GET_MOVIES',
+            payload:res.data
         })
     }
-
-
-    /**
-     * Obtener Pelicula Seleccionada
-     */
-     const getItemSelected = async (type_media,id_media) => {  
-
-        const res = await fetchItemSelected(type_media,id_media)
-        dispatch({
-            type:'GET_MOVIE_SELECTED',
-            payload:res
-        })
-    }
-
-
-    /**
-     * Obtener Artista Seleccionado
-     */
-     const getPersonSelected = async (id_person) => {  
-
-        const res = await fetchPersonSelected(id_person)
-        dispatch({
-            type:'GET_PERSON',
-            payload:res
-        })
-    }
-
 
 
     //Todo lo que este dentro de MoviesContext podras acceder al estado que se definio arriba
@@ -79,14 +40,8 @@ const MoviesState = (props) => {
     return (
         
         <MoviesContext.Provider value={{
-            trendingAllList:state.trendingAllList,
-            trendingMovieList:state.trendingMovieList,
-            trendingTVList:state.trendingTVList,
-            itemSelected:state.itemSelected,
-            personSelected:state.personSelected,
-            getTrendingList,
-            getItemSelected,
-            getPersonSelected
+            movies:state.movies,
+            getMovies
         }}>
             {
                 props.children
