@@ -1,20 +1,20 @@
 import react,{useEffect, useContext} from 'react'
-import MoviesContext from '../../Context/Movies/MovieContext'
+import PokemonContext from '../../Context/Pokemon/PokemonContext'
 import './Home.scss'
 
 export default function Home() {
 
-    const {movies, getMovies} = useContext(MoviesContext)
+    const {pokemones, getPokemones} = useContext(PokemonContext)
 
     useEffect( () =>{
-        getMovies()
-        console.log(movies)
+        getPokemones()
+        console.log(pokemones)
     }, [])
 
     return (
         <div className='Home'>
             {
-                movies.map( item => <h1>{item.title}</h1> )
+                pokemones.map( item => <h1>{item.title}</h1> )
             }
         </div>
     )

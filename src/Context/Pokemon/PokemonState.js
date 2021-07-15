@@ -4,52 +4,52 @@
  * 
  */
  import react, {useReducer} from 'react';
-import MoviesReducer from './MoviesReducer'; //Parametro de useReducer
-import MoviesContext from './MovieContext'
+import PokemonReducer from './PokemonReducer'; //Parametro de useReducer
+import PokemonContext from './PokemonContext'
 import axios from 'axios';
-const MoviesState = (props) => { 
+const PokemonState = (props) => { 
     /**
  * Definir el estado inicial de la aplicacion
  */
     const initialState = {
-        movies: []
+        pokemones: []
     }
 
     /**
      * @reducer funciones a ejecutar dependiendo de lo que reciba(el cual esta en el dispatch) Recibe el userReducer
      * @initialState  estado inicial de la aplicacion
      */
-    const [state, dispatch] = useReducer(MoviesReducer, initialState)
+    const [state, dispatch] = useReducer(PokemonReducer, initialState)
 
 
 
     /**
  * Obtener Peliculas
  */
-    const getMovies = async () => {
+    const getPokemones = async () => {
         const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
         dispatch({
-            type:'GET_MOVIES',
+            type:'GET_POKEMONES',
             payload:res.data
         })
     }
 
 
-    //Todo lo que este dentro de MoviesContext podras acceder al estado que se definio arriba
+    //Todo lo que este dentro de PokemonContext podras acceder al estado que se definio arriba
     //value={state} pueden acceder al initialState - El state viene ded donde fue definico como useReducer
     return (
         
-        <MoviesContext.Provider value={{
-            movies:state.movies,
-            getMovies
+        <PokemonContext.Provider value={{
+            pokemones:state.pokemones,
+            getPokemones
         }}>
             {
                 props.children
             }
-        </MoviesContext.Provider>
+        </PokemonContext.Provider>
     )
 
 
 }
 
-export default MoviesState;
+export default PokemonState;

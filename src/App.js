@@ -3,10 +3,10 @@ import Home from './Pages/Home/Home'
 import NotFound from './Components/NotFound/NotFound'
 import './App.scss';
 // CONTEXT
-import MoviesState from './Context/Movies/MoviesState'
+import PokemonState from './Context/Pokemon/PokemonState'
 
 function App() {
-    return <MoviesState>
+    return <PokemonState>
         <div className="App"> {/* Aqui todos los componentes podran acceder al estado de context */}
             <Router>
                 <Switch>
@@ -17,7 +17,7 @@ function App() {
                 </Switch>
             </Router>
         </div>
-    </MoviesState>;
+    </PokemonState>;
 }
 
 export default App;
