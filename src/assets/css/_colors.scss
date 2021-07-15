@@ -1,0 +1,10 @@
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+
+$colors:(
+    grass:#81c784,
+    fire:#ff8a80,
+    water:#81d4fa
+
+)

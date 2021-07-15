@@ -4,6 +4,7 @@ import NotFound from './Components/NotFound/NotFound'
 import './App.scss';
 // CONTEXT
 import PokemonState from './Context/Pokemon/PokemonState'
+import Details from './Pages/Details/Details';
 
 function App() {
     return <PokemonState>
@@ -12,6 +13,8 @@ function App() {
                 <Switch>
                     <Route path="/" exact
                         component={Home}/>
+                    <Route path="/pokemon/:id" exact
+                        component={Details}/>
                     <Route path="*"
                         component={NotFound}/>
                 </Switch>

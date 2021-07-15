@@ -36,14 +36,15 @@ export default function Home() {
 
     if (pokemones) {
         return (
-            <div className='Home'>
-                <Fade>
+            <Fade>
+                <div className='Home'>
+                    
 
-                    {
-                        pokemones.map((pokemon, index) => <Card pokemon={pokemon} key={index} />)
-                    }
-                </Fade>
-            </div>
+                        {
+                            pokemones.map((pokemon, index) => <Card pokemon={pokemon} key={index} />)
+                        }
+                </div>
+            </Fade>
         )
     } else {
         return <Loader />

@@ -1,0 +1,20 @@
+@import '../../assets//css/mediaQueries';
+
+.Home{
+    display: grid;
+        grid-template-columns:   repeat(2, 40% );
+        grid-template-rows:  repeat(9, 180px);    
+        grid-gap: 10px;    
+        justify-content: center;
+        max-width: 600px;
+        @include tablet{
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(6, 190px);
+            max-width: 800px;
+        }
+        @include desktop{
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(3, 200px);
+            max-width: 1200px;
+        }
+}
