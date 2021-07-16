@@ -43,7 +43,7 @@ export default function Card(props) {
             </Link>
         )
     }else{
-        return <CircularProgress />
+        return <CircularProgress /> //change a pokeball loader
     }
 
 }
