@@ -6,14 +6,18 @@
  import  {useReducer} from 'react';
 import PokemonReducer from './PokemonReducer'; //Parametro de useReducer
 import PokemonContext from './PokemonContext'
-import axios from 'axios';
-import {fetchListPokemones} from '../../utils/request'
+import {
+    fetchListPokemones,
+    fetchDetailsPokemon,
+    fetchEvolutionChainPokemon
+} from '../../utils/request'
 const PokemonState = (props) => { 
     /**
  * Definir el estado inicial de la aplicacion
  */
     const initialState = {
-        pokemones: null
+        pokemones: null ,
+        pokemonDetails:null
     }
 
     /**
@@ -38,9 +42,25 @@ const PokemonState = (props) => {
  * Get individual pokemon details
  */
      const getPokemonDetails = async (id) => {
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-        return res.data
+        const res =  await fetchDetailsPokemon(id)
+        dispatch({
+            type:'GET_POKEMON_DETAILS',
+            payload:res
+        })
     }
+/**
+ * Get individual pokemon details without set data on context
+ */
+
+    const getPokemonData = async (id) => {
+        return  await fetchDetailsPokemon(id)
+    }
+        /**
+         * Get Evloution chain
+         */
+         const getPokemonEvolutionChain = async (id) => {
+            return await fetchEvolutionChainPokemon(id)
+        }
 
     //Todo lo que este dentro de PokemonContext podras acceder al estado que se definio arriba
     //value={state} pueden acceder al initialState - El state viene ded donde fue definico como useReducer
@@ -48,8 +68,11 @@ const PokemonState = (props) => {
         
         <PokemonContext.Provider value={{
             pokemones:state.pokemones,
+            pokemonDetails:state.pokemonDetails,
             getPokemones,
-            getPokemonDetails
+            getPokemonDetails,
+            getPokemonEvolutionChain,
+            getPokemonData
         }}>
             {
                 props.children

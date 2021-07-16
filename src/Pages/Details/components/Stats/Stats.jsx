@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import './Stats.scss'
 import ProgressBar from '../ProgressBar/ProgressBar'
 export default function Stats(props) {
@@ -14,7 +14,7 @@ export default function Stats(props) {
         <div className='Stats'>
             {
                 stats.map( (stat, index) =>{
-                    return <div className="Stats__container">
+                    return <div className="Stats__container" key={index}>
                                 <div className="Stats__container__left">{stat.stat.name}</div>
                                 <div className="Stats__container__right">
                                     <ProgressBar done={stat.base_stat} max={getMaxStat()}/>                                    

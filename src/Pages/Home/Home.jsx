@@ -9,7 +9,7 @@ import Fade from 'react-reveal/Fade';
 const delay = 1;
 
 export default function Home() {
-
+    console.log('Home renderizado')
     const { pokemones, getPokemones } = useContext(PokemonContext)
 
     useEffect(() => {

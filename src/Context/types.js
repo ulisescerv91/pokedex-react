@@ -4,3 +4,4 @@
  */
 
 export const GET_POKEMONES = 'GET_POKEMONES';
+export const GET_POKEMON_DETAILS = 'GET_POKEMON_DETAILS';

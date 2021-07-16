@@ -8,16 +8,20 @@ import './Card.scss'
 import TypeIcon from '../../../../Components/TypeIcon/TypeIcon';
 
 export default function Card(props) {
-    const { getPokemonDetails} = useContext(PokemonContext)
+    console.log('Card renderizado')
+
+    const { getPokemonData} = useContext(PokemonContext)
     const { name } = props.pokemon;
     const [pokemon, setPokemon] =useState(null)
 
     useEffect(() =>{
         async function fetchMyAPI() {
-            setPokemon(await getPokemonDetails(name))
+            setPokemon(await getPokemonData(name))
           }
+
         fetchMyAPI()
-    },[])
+    },[getPokemonData,name])
+    //why add [getPokemonData,name] ? Its because whenever you are using useEffect and if you use something that is outside from useEffect. UseEffect need to make sure when to update when not that's why you need to pass it in its dependency
 
     if(pokemon){
         return (
