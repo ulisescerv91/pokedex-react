@@ -3,19 +3,22 @@ import PokemonContext from '../../../../Context/Pokemon/PokemonContext'
 
 export default function EvolutionChain(props) {
     const [pokemon, setPokemon] = useState(null)
+    const [pokemonEvolutions, setPokemonEvolutions] = useState([])
+
     const {id} = props
     const { getPokemonEvolutionChain} = useContext(PokemonContext)
     useEffect(() =>{
         async function fetchMyAPI() {
             setPokemon(await getPokemonEvolutionChain(id))
+            console.log(await pokemon)
         }
         fetchMyAPI()
-    },[getPokemonEvolutionChain,id])
+    },[])
 
     if(pokemon){
     return (
         <div className='EvolutionChain'>
-            {pokemon.id}
+            {pokemon.species.name}
         </div>
     )
     }else{

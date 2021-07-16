@@ -16,7 +16,7 @@ export default function Details(props) {
     useEffect(() =>{
         getPokemonDetails(id)   
                    
-    },[getPokemonDetails,id])
+    },[])
 
     if(pokemonDetails){
         return (

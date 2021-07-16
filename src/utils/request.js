@@ -27,7 +27,7 @@ export const fetchDetailsPokemon= async (id) =>{
 export const fetchEvolutionChainPokemon= async (id) =>{
     try {
         const res = await axios.get( `${baseURL}/evolution-chain/${id}/`)
-        return res.data 
+        return res.data.chain
 
     } catch (error) {
         console.log(fetchListPokemones,error)

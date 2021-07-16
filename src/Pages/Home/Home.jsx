@@ -38,8 +38,6 @@ export default function Home() {
         return (
             <Fade>
                 <div className='Home'>
-                    
-
                         {
                             pokemones.map((pokemon, index) => <Card pokemon={pokemon} key={index} />)
                         }
