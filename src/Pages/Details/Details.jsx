@@ -31,7 +31,7 @@ export default function Details(props) {
                             className="Details__pokemon-img"
                             />
 
-                        <Stats/>
+                        <Stats stats={pokemon.stats}/>
                     </div>
                         
                 </div>
